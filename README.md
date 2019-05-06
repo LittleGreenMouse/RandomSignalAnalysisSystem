@@ -28,9 +28,9 @@ Official download address: [http://activemq.apache.org/download.html][3]
 The basic message queue practice.
 
 ### How to run?
-#### Server side
-- Place Publisher.java in server
-- Place ```activemq\active-all-XXXX.jar``` in server
+#### Publisher side
+- Place Publisher.java in publisher host
+- Place ```activemq\active-all-XXXX.jar``` in publisher host
 - Add active-all-XXXX.jar to project dependence or to classpath
 - Change brokerURL to activemq server' ip and port, line 14 in publisher.java
   ``` java
@@ -46,10 +46,10 @@ The basic message queue practice.
   java Publisher
   ```
 
-#### Client side
+#### Receiver side
 ##### Synchronous consumer
-- Place SyncConsumer.java in client
-- Place ```activemq\active-all-XXXX.jar``` in client
+- Place SyncConsumer.java in receiver host
+- Place ```activemq\active-all-XXXX.jar``` in receiver host
 - Add active-all-XXXX.jar to project dependence or to classpath
 - Change brokerURL to activemq server' ip and port, line 15 in SyncConsumer.java
   ``` java
@@ -65,8 +65,8 @@ The basic message queue practice.
   java SyncConsumer
   ```
 ##### Asynchronous consumer
-- Place AsyncConsumer in client
-- Place ```activemq\active-all-XXXX.jar``` in client
+- Place AsyncConsumer in receiver host
+- Place ```activemq\active-all-XXXX.jar``` in receiver host
 - Add active-all-XXXX.jar to project dependence or to classpath
 - Change brokerURL to activemq server' ip and port, line 17 in AsyncConsumer\AsyncConsumer.java
   ``` java
@@ -84,7 +84,45 @@ The basic message queue practice.
 
 ---
 
+## TopicBasic
+The basic topic mode practoce.
 
+### How to run?
+#### Publisher side
+- Place Publisher.java in publisher host
+- Place ```activemq\active-all-XXXX.jar``` in publisher host
+- Add active-all-XXXX.jar to project dependence or to classpath
+- Change brokerURL to activemq server' ip and port, line 14 in publisher.java
+  ``` java
+  // Message broker address tcp://ip:port
+  private final String brokerURL = "tcp://localhost:61616";
+  ```
+- Compile it
+  ``` java
+  javac Publisher.java
+  ```
+- Run it
+  ``` java
+  java Publisher
+  ```
+
+#### Receiver side(asynchronous)
+- Place AsyncConsumer in receiver host
+- Place ```activemq\active-all-XXXX.jar``` in receiver host
+- Add active-all-XXXX.jar to project dependence or to classpath
+- Change brokerURL to activemq server' ip and port, line 15 in AsyncConsumer.java
+  ``` java
+  // Message broker address tcp://ip:port
+  String brokerURL = "tcp://localhost:61616";
+  ```
+- Compile them
+  ``` java
+  javac *.java
+  ```
+- Run it
+  ``` java
+  java AsyncConsumer
+  ```
 
 [1]: https://en.wikipedia.org/wiki/Apache_ActiveMQ
 [2]: https://zh.wikipedia.org/wiki/Apache_ActiveMQ
