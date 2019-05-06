@@ -124,6 +124,36 @@ The basic topic mode practoce.
   java AsyncConsumer
   ```
 
+---
+
+## RandomSignalAnalysisSystem
+### What does it look like?
+### How to run?
+#### RandomSignalGenerator
+- Place RandomSignalGenerator in publisher host
+- Place ```activemq\active-all-XXXX.jar``` in publisher host
+- Add active-all-XXXX.jar to project dependence or to classpath
+- Change brokerURL to activemq server' ip and port, line 16 in RandomSignalGenerator.java
+  ``` java
+  // Message broker address tcp://ip:port
+  private final String brokerURL = "tcp://localhost:61616";
+  ```
+- Compile it
+  ``` java
+  javac RandomSignalGenerator.java
+  ```
+- Run it
+  ``` java
+  java RandomSignalGenerator
+  ``` 
+**Note: signal obeys a given normal distribution, you can change it by changing it's mean and variance, line 73 and line 75 in RandomSignalGenerator.java**
+``` java
+// mean of normal distribution
+double mean = 10;
+// variance of normal distribution
+double variance = 4;
+```
+
 [1]: https://en.wikipedia.org/wiki/Apache_ActiveMQ
 [2]: https://zh.wikipedia.org/wiki/Apache_ActiveMQ
 [3]: http://activemq.apache.org/download.html
