@@ -37,9 +37,9 @@ public class MainController {
     @FXML
     public void initialize() {
         // Set y axis scale
-        yAxis.setAutoRanging(false);
+        yAxis.setAutoRanging(true);
         yAxis.setLowerBound(0);
-        yAxis.setUpperBound(24);
+        yAxis.setUpperBound(1);
 
         // Set x axis scale
         xAxis.setAutoRanging(true);
