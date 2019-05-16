@@ -28,6 +28,9 @@ public class MainController {
     private double meanValue;
     private double varianceValue;
 
+    private double xLowerBound;
+    private double xUpperBound;
+
     private XYChart.Series<Number, Number> series;
     private int time;
 
@@ -42,9 +45,12 @@ public class MainController {
         yAxis.setUpperBound(1);
 
         // Set x axis scale
-        xAxis.setAutoRanging(true);
-        xAxis.setLowerBound(0);
-        xAxis.setUpperBound(1);
+        xLowerBound = 0;
+        xUpperBound = 20;
+        xAxis.setAutoRanging(false);
+        xAxis.setForceZeroInRange(false);
+        xAxis.setLowerBound(xLowerBound);
+        xAxis.setUpperBound(xUpperBound);
         xAxis.setTickUnit(1);
 
         // Set points
@@ -118,5 +124,15 @@ public class MainController {
      */
     public double getVariance() {
         return varianceValue;
+    }
+
+    /**
+     * Slide the to the left
+     */
+    public void slideLeft() {
+        xLowerBound++;
+        xUpperBound++;
+        xAxis.setLowerBound(xLowerBound);
+        xAxis.setUpperBound(xUpperBound);
     }
 }

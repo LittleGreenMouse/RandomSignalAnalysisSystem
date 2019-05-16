@@ -1,6 +1,5 @@
 package analysis;
 
-import javafx.scene.chart.XYChart;
 import view.MainController;
 
 import javax.jms.JMSException;
@@ -27,17 +26,24 @@ public class MyListener implements MessageListener {
     @Override
     public void onMessage(Message message) {
         try {
-            // receive new signal
+            // Receive new signal
             String m = ((TextMessage) message).getText();
             double tmp = Double.valueOf(m);
             data.add(tmp);
+
+            // If data size is above 20, xAxis slides one unit to the left
+            if(data.size() > 20) {
+                mainController.slideLeft();
+            }
+
+            // Add new signal to chart
             mainController.setNewSignal(tmp);
 
-            // calculate mean and variance
+            // Calculate mean and variance
             CalculateThread calculate = new CalculateThread(data, mainController);
             calculate.start();
 
-            // judge if new signal is outlier
+            // Judge if new signal is outlier
             if(data.size() == 1){
                 mainController.setOutlier(false);
             } else {
